@@ -98,6 +98,6 @@ dependencies:
 git:
 	@git add .
 	@git status
-	@git commit -m "Update Makefile and dependencies"
+	@git commit -m "Update"
 	@git push origin main
 # Display the current environment variables
