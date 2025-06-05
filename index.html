@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Combat</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="start-screen" class="screen active">
+      <h1>⚔️ Trivia Combat ⚔️</h1>
+      <p>Challenge your mind in this fast-paced trivia duel!</p>
+      <button id="start-btn">Start Game</button>
+    </div>
 
+    <div id="game-screen" class="screen">
+      <div class="status-bar">
+        <div class="health">
+          <label>👤 You</label>
+          <div class="bar" id="player-health"></div>
+        </div>
+        <div class="health">
+          <label>💀 Enemy</label>
+          <div class="bar enemy" id="enemy-health"></div>
+        </div>
+      </div>
+
+      <div class="question-box">
+        <h2 id="question">Loading...</h2>
+        <div id="answers" class="answers"></div>
+      </div>
+
+      <div class="bottom-bar">
+        <div id="timer">⏱ 15</div>
+        <div id="score">Score: 0</div>
+      </div>
+    </div>
+
+    <div id="end-screen" class="screen">
+      <h2 id="result"></h2>
+      <p id="final-score"></p>
+      <button id="restart-btn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
