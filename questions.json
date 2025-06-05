@@ -1,1 +1,38 @@
 
+[
+  {
+    "question": "What is the capital of France?",
+    "answers": ["Paris", "London", "Rome", "Berlin"],
+    "correct": "Paris"
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "answers": ["Earth", "Venus", "Mars", "Jupiter"],
+    "correct": "Mars"
+  },
+  {
+    "question": "What is 5 + 7?",
+    "answers": ["10", "12", "13", "11"],
+    "correct": "12"
+  },
+  {
+    "question": "Who wrote 'To Kill a Mockingbird'?",
+    "answers": ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+    "correct": "Harper Lee"
+  },
+  {
+    "question": "What gas do plants absorb from the atmosphere?",
+    "answers": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+    "correct": "Carbon Dioxide"
+  },
+  {
+    "question": "Which element has the chemical symbol 'O'?",
+    "answers": ["Osmium", "Oxygen", "Gold", "Zinc"],
+    "correct": "Oxygen"
+  },
+  {
+    "question": "What language is used to style web pages?",
+    "answers": ["HTML", "CSS", "Python", "Java"],
+    "correct": "CSS"
+  }
+]
