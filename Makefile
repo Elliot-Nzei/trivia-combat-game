@@ -37,7 +37,8 @@ clean-temp:
 
 .PHONY: venv
 venv:
-	@cmd /k ".\venv\Scripts\activate"
+	@echo "To activate the virtual environment, run:"
+	@echo "venv\\Scripts\\activate"
 # Activate the virtual environment
 
 .PHONY: deactivate
