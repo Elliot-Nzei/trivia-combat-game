@@ -77,13 +77,43 @@ button:hover {
   font-weight: bold;
 }
 
-.bar {
-  width: 100%;
-  height: 20px;
-  background: #2c3e50;
-  border-radius: 10px;
+.health-bar {
+  background-color: #ddd;
+  border-radius: 8px;
   overflow: hidden;
+  height: 25px;
+  margin: 10px 0;
+  width: 100%;
   position: relative;
+}
+
+.health-fill {
+  background: linear-gradient(to right, #4caf50, #2e7d32);
+  height: 100%;
+  width: 100%; /* Initial value, gets updated by JS */
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+  transition: width 0.3s ease;
+}
+.bar {
+  position: relative;
+  height: 25px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  width: 0; /* Initial value, gets updated by JS */
+  transition: width 0.3s ease;
+}
+.bar.player::after {
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
 }
 
 .bar::before {
@@ -101,7 +131,7 @@ button:hover {
 .bar.enemy::before {
   background: linear-gradient(90deg, #e74c3c, #c0392b);
 }
-
+ 
 #player-health::before {
   width: 100%;
 }
@@ -152,4 +182,118 @@ button:hover {
 #final-score {
   font-size: 1.2em;
   color: #bdc3c7;
+}
+
+
+
+
+#final-score span {
+  font-weight: bold;
+  color: #e67e22;
+}
+#game-over {
+  font-size: 1.5em;
+  color: #e74c3c;
+  margin-top: 20px;
+}
+#game-over span {
+  font-weight: bold;
+  color: #c0392b;
+}
+#game-over.hidden {
+  display: none;
+}
+#game-over.visible {
+  display: block;
+}
+#game-over.visible h2 {
+  margin-bottom: 10px;
+}
+#game-over.visible p {
+  font-size: 1.2em;
+  color: #bdc3c7;
+}
+#game-over.visible p span {
+  font-weight: bold;
+  color: #e67e22;
+}
+#game-over.visible button {
+  margin-top: 20px;
+  background: #e67e22;
+}
+#game-over.visible button:hover {
+  background: #d35400;
+}
+#game-over.visible button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(231, 126, 34, 0.5);
+}
+#game-over.visible button:active {
+  background: #c0392b;
+}
+#game-over.visible button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+
+
+
+#game-over.visible button:disabled:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:focus {
+  outline: none;
+  box-shadow: none;
+}
+#game-over.visible button:disabled:active {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus {
+  outline: none;
+  box-shadow: none;
+}
+#game-over.visible button:disabled:active:focus:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus {
+  outline: none;
+  box-shadow: none;
+}
+#game-over.visible button:disabled:active:focus:active:focus:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:focus {
+  outline: none;
+  box-shadow: none;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:focus:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:focus:active {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:focus:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:focus:active:hover {
+  background: #bdc3c7;
+}
+#game-over.visible button:disabled:active:focus:active:hover {
+  background: #bdc3c7;
 }
