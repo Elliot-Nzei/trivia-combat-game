@@ -2,62 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trivia Combat</title>
+  <title>Quiz Battle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quiz Battle Game - Test your knowledge and defeat the enemy!">
+  <link rel="""icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <div id="start-screen" class="screen active">
-      <h1>⚔️ Trivia Combat ⚔️</h1>
-      <p>Challenge your mind in this fast-paced trivia duel!</p>
-      <button id="start-btn">Start Game</button>
-    </div>
+    
+    <!-- Left Sidebar -->
+    <aside class="sidebar" aria-label="Main navigation">
+      <h2>Quiz Battle</h2>
+      <nav>
+        <ul>
+          <li><a href="#" onclick="navigateTo('home')">🏠 Home</a></li>
+          <li><a href="#" onclick="navigateTo('game')">⚔️ Play Game</a></li>
+          <li><a href="#" onclick="navigateTo('add')">➕ Add Question</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-    <div id="game-screen" class="screen">
-      <div class="status-bar">
-        <div class="health">
-          <label>👤 You</label>
-          <div class="bar" id="player-health"></div>
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <section id="home" class="page active" aria-labelledby="home-title">
+        <h1 id="home-title">Welcome to the Quiz Battle Game</h1>
+        <p>Test your knowledge and defeat the enemy!</p>
+        <button onclick="openModal('instructions-modal')" aria-label="How to Play">❓ How to Play</button>
+      </section>
+
+      <section id="game" class="page" aria-labelledby="game-title">
+        <h2 id="game-title" class="visually-hidden">Game</h2>
+        <div id="start-screen" class="active">
+          <button id="start-btn">Start Quiz</button>
         </div>
-        <div class="health">
-          <label>💀 Enemy</label>
-          <div class="bar enemy" id="enemy-health"></div>
+        <div id="game-screen">
+          <div id="stats">
+            <div>🧍 Player: <div id="player-health" class="health-bar" aria-label="Player Health"></div></div>
+            <div>👾 Enemy: <div id="enemy-health" class="health-bar" aria-label="Enemy Health"></div></div>
+            <div id="timer" aria-live="polite">⏱ 15</div>
+            <div id="score">Score: 0</div>
+          </div>
+          <div id="question-container">
+            <div id="question"></div>
+            <div id="answers"></div>
+          </div>
         </div>
-      </div>
+        <div id="end-screen">
+          <p id="result"></p>
+          <p id="final-score"></p>
+          <button id="restart-btn">Restart</button>
+        </div>
+        <div id="loading-spinner" class="hidden" aria-live="polite">
+          <div class="spinner"></div>
+          <span>Loading...</span>
+        </div>
+        <div id="game-message" class="message"></div>
+      </section>
 
-      <div class="info">
-        <p>Answer questions correctly to attack your enemy!</p>
-        <p>Each correct answer deals 10 damage.</p>
-        <p>Be quick! You have 15 seconds per question.</p>
-      </div>
+      <section id="add" class="page" aria-labelledby="add-title">
+        <h2 id="add-title">Add a New Question</h2>
+        <form id="add-question-form" autocomplete="off">
+          <label>
+            Question:
+            <input type="text" name="question" required>
+          </label>
+          <label>
+            Correct Answer:
+            <input type="text" name="correct" required>
+          </label>
+          <label>
+            Wrong Answer 1:
+            <input type="text" name="wrong1" required>
+          </label>
+          <label>
+            Wrong Answer 2:
+            <input type="text" name="wrong2" required>
+          </label>
+          <label>
+            Wrong Answer 3:
+            <input type="text" name="wrong3" required>
+          </label>
+          <button type="submit">Add Question</button>
+        </form>
+        <div id="add-question-message" class="message"></div>
+      </section>
+    </main>
 
-      <div class="question-box">
-        <h2 id="question">Loading...</h2>
-        <div id="answers" class="answers"></div>
-      </div>
+    <!-- Right Vertical Nav -->
+    <aside class="right-navbar" aria-label="Tips">
+      <p>📚 Tips</p>
+      <ul>
+        <li>Answer quickly!</li>
+        <li>Wrong answers hurt you!</li>
+        <li>Good luck!</li>
+      </ul>
+    </aside>
 
-      <div class="bottom-bar">
-        <div id="timer">⏱ 15</div>
-        <div id="score">Score: 0</div>
-      </div>
-    </div>
+  </div>
 
-    <div id="end-screen" class="screen">
-      <h2 id="result"></h2>
-      <p id="final-score"></p>
-      <button id="restart-btn">Play Again</button>
+  <!-- Instructions Modal -->
+  <div id="instructions-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <h2 id="modal-title">How to Play</h2>
+      <ul>
+        <li>Click "Start Quiz" to begin.</li>
+        <li>Answer questions before the timer runs out.</li>
+        <li>Correct answers damage the enemy, wrong answers hurt you.</li>
+        <li>Defeat the enemy before you run out of health!</li>
+      </ul>
+      <button onclick="closeModal('instructions-modal')">Close</button>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
-
+  
+  <footer>
+    <p>&copy; 2024 Quiz Battle Game. All rights reserved.</p>
+  </footer>
   <script src="game.js"></script>
 </body>
 </html>
