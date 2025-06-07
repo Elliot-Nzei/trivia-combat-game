@@ -8,7 +8,6 @@ install:
 	python -m venv venv
 	venv\Scripts\pip.exe install --upgrade pip
 	venv\Scripts\pip.exe install fastapi uvicorn
-
 # Run the FastAPI app
 .PHONY: run
 run:
@@ -37,8 +36,7 @@ clean-temp:
 
 .PHONY: venv
 venv:
-	@echo "To activate the virtual environment, run:"
-	@echo "venv\\Scripts\\activate"
+	venv\Scripts\activate
 # Activate the virtual environment
 
 .PHONY: deactivate
